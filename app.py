@@ -5,7 +5,7 @@ from stories import story
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "secret"
 
-debut = DebugToolbarExtension(app)
+debug = DebugToolbarExtension(app)
 
 @app.route('/')
 def questions():
@@ -13,6 +13,6 @@ def questions():
     return render_template("questions.html", prompts=prompts)
 
 @app.route("/story")
-def story():
+def show_story():
     text = story.generate(request.args)
     return render_template("story.html", text=text)
